@@ -2,7 +2,7 @@
 This repository will contain Terraform code meant to recreate the cloud infrastructure I deployed for my CIS3470 final project. The requirements for that project were as follows:
 
 1. Create an Azure Server VM using a B2-Series Server.  (Note you may need to shop around region to find an available server)
-               a. Windows Server 2022 Data Center           
+   a. Windows Server 2022 Data Center           
 2. Resize your Azure VM from B2s to B2ms and provide log proof of process.
 3. Keep track of the cost of running your VM and VPN.
 4. Use Azure DNS to create a DNS pointer.
