@@ -1,14 +1,24 @@
-# Placeholder to see if committing from VS Code goes through to GitHub repo: https://github.com/KLee-2524/CIS3470-Project.git
-# Windows Server 2022 Datacenter Base
-#   Image ID: ami-0b91c4400195d38cc (Free Tier Eligible)
-#   Instance type: t2.micro (Free Tier Eligible) 
-# https://stackoverflow.com/questions/5964118/git-working-on-wrong-branch-how-to-copy-changes-to-existing-topic-branch
+data "aws_ami" "app_ami" {
+  most_recent = true
 
-resource "aws_instance" "win_ser_22" {
-  ami           = ami-0b91c4400195d38cc
-  instance_type = "t2.micro"
+  filter {
+    name   = "name"
+    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["979382823631"] # Bitnami
+}
+
+resource "aws_instance" "web" {
+  ami           = data.aws_ami.app_ami.id
+  instance_type = "t3.nano"
 
   tags = {
-    Name = "Test"
+    Name = "HelloWorld"
   }
 }
