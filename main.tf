@@ -23,7 +23,7 @@ resource "aws_vpc" "test" {
 }
 
 resource "aws_subnet" "test-subnet" {
-  vpc_id            = resource.aws_vpc.test.id
+  vpc_id            = aws_vpc.test.id
   cidr_block        = "172.16.10.0/24"
   availability_zone = "us-west-1a"
 
