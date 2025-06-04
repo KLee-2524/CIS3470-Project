@@ -32,7 +32,7 @@ resource "aws_subnet" "CIS3470-subnet" {
   }
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "CIS3470-WinSer22" {
   ami           = "ami-06fe666da1b90024e"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.test-subnet.id
