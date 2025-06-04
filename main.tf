@@ -14,18 +14,9 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-resource "aws_default_subnet" "terraform_subnet" {
-  availability_zone = "us-west-2a"
-
-  tags = {
-    Name = "Terraform Subnet"
-  }
-}
-
 resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
   instance_type = "t3.nano"
-  subnet_id     = resource.aws_default_subnet.terraform_subnet.availability_zone_id
 
   tags = {
     Name = "HelloWorld"
