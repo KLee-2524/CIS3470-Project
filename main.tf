@@ -1,18 +1,18 @@
-data "aws_ami" "app_ami" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["979382823631"] # Bitnami
-}
+#data "aws_ami" "app_ami" {
+#  most_recent = true
+#
+#  filter {
+#    name   = "name"
+#    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
+#  }
+#
+#  filter {
+#    name   = "virtualization-type"
+#    values = ["hvm"]
+#  }
+#
+#  owners = ["979382823631"] # Bitnami
+#}
 
 resource "aws_vpc" "test" {
   cidr_block = "172.16.0.0/16"
@@ -33,8 +33,8 @@ resource "aws_subnet" "test-subnet" {
 }
 
 resource "aws_instance" "web" {
-  ami           = data.aws_ami.app_ami.id
-  instance_type = "t3.nano"
+  ami           = "ami-06fe666da1b90024e"
+  instance_type = "t2.micro"
   subnet_id     = aws_subnet.test-subnet.id
 
   tags = {
