@@ -35,7 +35,7 @@ resource "aws_subnet" "test-subnet" {
 resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
   instance_type = "t3.nano"
-  subnet_id     = resource.aws_subnet.test-subnet.id
+  subnet_id     = aws_subnet.test-subnet.id
 
   tags = {
     Name = "HelloWorld"
