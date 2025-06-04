@@ -14,10 +14,28 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
+resource "aws_vpc" "test" {
+  cidr_block = "172.16.0.0/16"
+
+  tags = {
+    Name = "test-vpc"
+  }
+}
+
+resource "aws_subnet" "test-subnet" {
+  vpc_id            = resource.aws_vpc.test.id
+  cidr_block        = "172.16.10.0/24"
+  availability_zone = "us-west-1a"
+
+  tags = {
+    Name = "test-subnet"
+  }
+}
+
 resource "aws_instance" "web" {
   ami           = data.aws_ami.app_ami.id
   instance_type = "t3.nano"
-  subnet_id     = "subnet-053b1215abb0fd1ce"
+  subnet_id     = resource.aws_subnet.test-subnet.id
 
   tags = {
     Name = "HelloWorld"
