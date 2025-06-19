@@ -52,8 +52,6 @@ resource "aws_route_table" "cis3470-route-table" {
 resource "aws_route_table_association" "cis3470-subnet" {
   subnet_id      = aws_subnet.cis3470-subnet.id
   route_table_id = aws_route_table.cis3470-route-table.id
-
-  depends_o
 }
 
 # SECURITY GROUP #
