@@ -51,12 +51,14 @@ resource "aws_route_table" "cis3470-route-table" {
 
 resource "aws_route_table_association" "cis3470-subnet" {
   subnet_id      = aws_subnet.cis3470-subnet.id
-  route_table_id = aws_route_table.cis3470-route_table.id
+  route_table_id = aws_route_table.cis3470-route-table.id
+
+  depends_o
 }
 
 # SECURITY GROUP #
 resource "aws_security_group" "cis3470-sg" {
-  name   = cis3470-sg
+  name   = "CIS3470-sg"
   vpc_id = aws_vpc.cis3470-vpc.id
 
   ingress {
