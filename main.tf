@@ -30,7 +30,7 @@ resource "aws_internet_gateway" "cis3470-gateway" {
 
 resource "aws_subnet" "cis3470-subnet" {
   vpc_id                  = aws_vpc.cis3470-vpc.id
-  cidr_block              = 172.16.0.0/24
+  cidr_block              = "172.16.0.0/24"
   availability_zone       = "us-west-1a"
   map_public_ip_on_launch = true
 
