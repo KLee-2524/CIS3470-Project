@@ -83,7 +83,7 @@ resource "aws_security_group" "cis3470-sg" {
 
 resource "aws_key_pair" "terraform-kp" {
   key_name = "terraform-key-pair"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCflu9e+KfUkbSMHYOxtvufXdRsijsDi/W5YRuwzcT4NKFSYZ1VmSUIt5d9MT/3DmmocIyLtiJgC/CFPNHtFiZjiHxWMjDYKYuRkAIpJ0UCh2Mns3KXYfnVWvEnt5h2skVb7R9bGTDDOw32MiIvggXMacBn/FI719i7B4iYT9gits4wTrcxRG4XPVnp+XcP5bjZFpMrASCOuefuKDbcHUAQZnMLrnSuhE8hTit1pTUdwh7REZYb6KCoK1PeYEDbHuTaZ3g4qVx1NpUsOmmd/WQvQWgEO9wKRjrjWtjvLl4Ta+Txr0UjzkV2bMWoL/n8tedkFgUlrvFvYQnxgTnLct5V"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQChKxJks3yFmNEKmYu76R6bOR8bUVnAqQLx8XMPVoYNZBiTLcieEv9eFHuC1waU5b8VMSI2vk92o7fquSMvhXXixRUKjYIreb/tFMaKXzKoGW9RDnoirjy6UtYBtG3O09ilnFmbVUwvx3MjdbTABTfEe5wttG7DVDn64EPpIdTGTKAwHNx7nCUkGjijJ8u/aJ64cJFw/tDNRGrFGgDfx4NYI3ikBadllm0AeS1icM5Z8vnfSlQQbBy6vSiclpJtX4dAGgvcP4rmacLIRswWqms8nkG8e1yQx8TEByTSOyvuCKdvGyooqIac7jgnmaKOW0KnCpc/xpGPAYMg2+KAyX8N"
 }
 
 resource "aws_instance" "cis3740-win-ser-22" {
