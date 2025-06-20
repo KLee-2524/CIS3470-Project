@@ -1,18 +1,5 @@
-#data "aws_ami" "app_ami" {
-#  most_recent = true
-#
-#  filter {
-#    name   = "name"
-#    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
-#  }
-#
-#  filter {
-#    name   = "virtualization-type"
-#    values = ["hvm"]
-#  }
-#
-#  owners = ["979382823631"] # Bitnami
-#}
+# us-west-1 Kali Linux AMI: ami-0f36db53af1422a10
+# us-west-1 Windows Server 2022 AMI: ami-06fe666da1b90024e
 
 # NETWORKING #
 resource "aws_vpc" "cis3470-vpc" {
@@ -87,7 +74,7 @@ resource "aws_key_pair" "terraform-kp" {
 }
 
 resource "aws_instance" "cis3740-win-ser-22" {
-  ami           = "ami-06fe666da1b90024e"
+  ami           = "ami-0f36db53af1422a10"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.cis3470-subnet.id
   
