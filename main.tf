@@ -1,3 +1,4 @@
+# TODO: PARAMETERIZE THE PUBLIC KEY, AMI, 
 # us-west-1 Kali Linux AMI: ami-0f36db53af1422a10
 # us-west-1 Windows Server 2022 AMI: ami-06fe666da1b90024e
 
@@ -74,7 +75,7 @@ resource "aws_key_pair" "terraform-kp" {
 }
 
 resource "aws_instance" "cis3740-win-ser-22" {
-  ami           = "ami-0f36db53af1422a10"
+  ami           = "ami-06fe666da1b90024e"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.cis3470-subnet.id
   
