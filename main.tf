@@ -2,49 +2,49 @@
 # us-west-1 Windows Server 2022 AMI: ami-06fe666da1b90024e
 
 # NETWORKING #
-resource "aws_vpc" "cis3470-vpc" {
+resource "aws_vpc" "kali-vpc" {
   cidr_block           = "172.16.0.0/16"
   enable_dns_hostnames = true
 
   tags = {
-    Name = "CIS3470-vpc"
+    Name = "KALI-vpc"
   }
 }
 
-resource "aws_internet_gateway" "cis3470-gateway" {
-  vpc_id = aws_vpc.cis3470-vpc.id
+resource "aws_internet_gateway" "kali-gateway" {
+  vpc_id = aws_vpc.kali-vpc.id
 }
 
-resource "aws_subnet" "cis3470-subnet" {
-  vpc_id                  = aws_vpc.cis3470-vpc.id
+resource "aws_subnet" "kali-subnet" {
+  vpc_id                  = aws_vpc.kali-vpc.id
   cidr_block              = "172.16.0.0/24"
   availability_zone       = "us-west-1a"
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "CIS3470-subnet"
+    Name = "KALI-subnet"
   }
 }
 
 # ROUTING #
-resource "aws_route_table" "cis3470-route-table" {
-  vpc_id = aws_vpc.cis3470-vpc.id
+resource "aws_route_table" "kali-route-table" {
+  vpc_id = aws_vpc.kali-vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.cis3470-gateway.id
+    gateway_id = aws_internet_gateway.kali-gateway.id
   }
 }
 
-resource "aws_route_table_association" "cis3470-subnet" {
-  subnet_id      = aws_subnet.cis3470-subnet.id
-  route_table_id = aws_route_table.cis3470-route-table.id
+resource "aws_route_table_association" "kali-subnet" {
+  subnet_id      = aws_subnet.kali-subnet.id
+  route_table_id = aws_route_table.kali-route-table.id
 }
 
 # SECURITY GROUP #
-resource "aws_security_group" "cis3470-sg" {
-  name   = "CIS3470-sg"
-  vpc_id = aws_vpc.cis3470-vpc.id
+resource "aws_security_group" "kali-sg" {
+  name   = "KALI-sg"
+  vpc_id = aws_vpc.kali-vpc.id
 
   ingress {
     from_port  = 22
@@ -73,16 +73,16 @@ resource "aws_key_pair" "terraform-kp" {
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZGj5R1HTG3yFkqbIXFuYttZqXpM4gwatKCY7Z3rkEpTyhuZsNxM2jujfU+DX3U9MWvVkKSEoO46adkizf8fCZWkjoF455izYNzXeopqNqJf2d67rvDiDuH3srO2SmhpdjlQpe0aLaUKI4s5wCrfu6ZvZEmV393Pwd7NMdEpu/w/oYrO/NDjxx0Cl8aBhoo53kE4p2szcJnU1rC0liBSIcx20OEoLnd4xf1COK15Z45q7pSzoKblbalkeTJFEQTqBvw8eKQzyb3At7u7ybJ5E8ZkopuPj7KFlEN0gC828Mgqx6TYVAlHw4eI9L9Zmt37o2QiOgMiJaeAlk1fsaF60L"
 }
 
-resource "aws_instance" "cis3740-win-ser-22" {
+resource "aws_instance" "kali-vm" {
   ami           = "ami-0f36db53af1422a10"
   instance_type = "t2.micro"
-  subnet_id     = aws_subnet.cis3470-subnet.id
+  subnet_id     = aws_subnet.kali-subnet.id
   
-  vpc_security_group_ids = [aws_security_group.cis3470-sg.id]
+  vpc_security_group_ids = [aws_security_group.kali-sg.id]
 
   key_name = "terraform-key-pair"
 
   tags = {
-    Name = "CIS3470-WinSer22"
+    Name = "KALI-VM"
   }
 }
