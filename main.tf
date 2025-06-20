@@ -88,6 +88,8 @@ resource "aws_instance" "cis3740-win-ser-22" {
   
   vpc_security_group_ids = [aws_security_group.cis3470-sg.id]
 
+  key_name = "TestKeyPair"
+
   tags = {
     Name = "CIS3470-WinSer22"
   }
