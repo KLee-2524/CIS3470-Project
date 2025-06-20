@@ -81,6 +81,11 @@ resource "aws_security_group" "cis3470-sg" {
   }
 }
 
+resource "aws_key_pair" "terraform-kp" {
+  key_name = "terraform-key-pair"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCflu9e+KfUkbSMHYOxtvufXdRsijsDi/W5YRuwzcT4NKFSYZ1VmSUIt5d9MT/3DmmocIyLtiJgC/CFPNHtFiZjiHxWMjDYKYuRkAIpJ0UCh2Mns3KXYfnVWvEnt5h2skVb7R9bGTDDOw32MiIvggXMacBn/FI719i7B4iYT9gits4wTrcxRG4XPVnp+XcP5bjZFpMrASCOuefuKDbcHUAQZnMLrnSuhE8hTit1pTUdwh7REZYb6KCoK1PeYEDbHuTaZ3g4qVx1NpUsOmmd/WQvQWgEO9wKRjrjWtjvLl4Ta+Txr0UjzkV2bMWoL/n8tedkFgUlrvFvYQnxgTnLct5V"
+}
+
 resource "aws_instance" "cis3740-win-ser-22" {
   ami           = "ami-06fe666da1b90024e"
   instance_type = "t2.micro"
@@ -88,7 +93,7 @@ resource "aws_instance" "cis3740-win-ser-22" {
   
   vpc_security_group_ids = [aws_security_group.cis3470-sg.id]
 
-  key_name = "TestKeyPair"
+  key_name = "terraform-key-pair"
 
   tags = {
     Name = "CIS3470-WinSer22"
