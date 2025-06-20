@@ -75,8 +75,8 @@ resource "aws_key_pair" "terraform-kp" {
 }
 
 resource "aws_instance" "cis3740-win-ser-22" {
-  ami           = "ami-06fe666da1b90024e"
-  instance_type = "t2.micro"
+  ami           = var.vm_ami.default
+  instance_type = var.instance_type.default
   subnet_id     = aws_subnet.cis3470-subnet.id
   
   vpc_security_group_ids = [aws_security_group.cis3470-sg.id]
