@@ -12,5 +12,5 @@ variable "aws_region" {
 variable "vm_type" {
     description = "Kind of VM being deployed" 
     type        = string
-    default     = "KALI"
+    default     = "NEVER GONNA GIVE YOU UP"
 }
