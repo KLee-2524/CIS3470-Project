@@ -75,7 +75,7 @@ resource "aws_security_group" "kali-sg" {
 
 resource "aws_instance" "kali-vm" {
   ami           = "ami-0f36db53af1422a10"
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
   subnet_id     = aws_subnet.kali-subnet.id
   
   vpc_security_group_ids = [aws_security_group.kali-sg.id]
