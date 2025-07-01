@@ -7,7 +7,7 @@ resource "aws_vpc" "kali-vpc" {
   enable_dns_hostnames = true
 
   tags = {
-    Name = "KALI-vpc"
+    Name = "${var.vm_type}-vpc"
   }
 }
 
@@ -22,7 +22,7 @@ resource "aws_subnet" "kali-subnet" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "KALI-subnet"
+    Name = "${var.vm_type}-subnet"
   }
 }
 
@@ -43,7 +43,7 @@ resource "aws_route_table_association" "kali-subnet" {
 
 # SECURITY GROUP #
 resource "aws_security_group" "kali-sg" {
-  name   = "KALI-sg"
+  name   = "${var.vm_type}-sg"
   vpc_id = aws_vpc.kali-vpc.id
 
   ingress {
@@ -83,6 +83,6 @@ resource "aws_instance" "kali-vm" {
   key_name = "terraform-key-pair"
 
   tags = {
-    Name = "KALI-VM"
+    Name = "${var.vm_type}-VM"
   }
 }

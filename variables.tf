@@ -8,3 +8,9 @@ variable "aws_region" {
     type        = string
     default     = "us-west-1"
 }
+
+variable "vm_type" {
+    description = "Kind of VM being deployed" 
+    type        = string
+    default     = "KALI"
+}
