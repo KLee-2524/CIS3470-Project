@@ -12,7 +12,7 @@ variable "aws_region" {
 variable "vm_type" {
     description = "Kind of VM being deployed" 
     type        = string
-    default     = "NEVER GONNA GIVE YOU UP"
+    default     = "KALI"
 }
 
 # us-west-1 Kali Linux AMI: ami-0f36db53af1422a10
