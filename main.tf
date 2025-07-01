@@ -1,6 +1,3 @@
-# us-west-1 Kali Linux AMI: ami-0f36db53af1422a10
-# us-west-1 Windows Server 2022 AMI: ami-06fe666da1b90024e
-
 # NETWORKING #
 resource "aws_vpc" "kali-vpc" {
   cidr_block           = "172.16.0.0/16"
@@ -68,13 +65,8 @@ resource "aws_security_group" "kali-sg" {
   }
 }
 
-#resource "aws_key_pair" "terraform-kp" {
-#  key_name = "terraform-key-pair"
-#  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZGj5R1HTG3yFkqbIXFuYttZqXpM4gwatKCY7Z3rkEpTyhuZsNxM2jujfU+DX3U9MWvVkKSEoO46adkizf8fCZWkjoF455izYNzXeopqNqJf2d67rvDiDuH3srO2SmhpdjlQpe0aLaUKI4s5wCrfu6ZvZEmV393Pwd7NMdEpu/w/oYrO/NDjxx0Cl8aBhoo53kE4p2szcJnU1rC0liBSIcx20OEoLnd4xf1COK15Z45q7pSzoKblbalkeTJFEQTqBvw8eKQzyb3At7u7ybJ5E8ZkopuPj7KFlEN0gC828Mgqx6TYVAlHw4eI9L9Zmt37o2QiOgMiJaeAlk1fsaF60L"
-#}
-
 resource "aws_instance" "kali-vm" {
-  ami           = "ami-0f36db53af1422a10"
+  ami           = var.vm_ami
   instance_type = var.instance_type
   subnet_id     = aws_subnet.kali-subnet.id
   

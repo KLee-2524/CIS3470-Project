@@ -14,3 +14,11 @@ variable "vm_type" {
     type        = string
     default     = "NEVER GONNA GIVE YOU UP"
 }
+
+# us-west-1 Kali Linux AMI: ami-0f36db53af1422a10
+# us-west-1 Windows Server 2022 AMI: ami-06fe666da1b90024e
+variable "vm_ami" {
+    description = "AMI of the VM to deploy"
+    type        = string
+    default     = ami-0f36db53af1422a10
+}
