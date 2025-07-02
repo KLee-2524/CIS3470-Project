@@ -70,8 +70,8 @@ resource "aws_security_group" "cis3470-sg" {
 }
 
 resource "aws_instance" "cis3740-win-ser-22" {
-  ami           = var.winser22_ami.default
-  instance_type = var.instance_type.default
+  ami           = var.winser22_ami
+  instance_type = var.instance_type
   subnet_id     = aws_subnet.cis3470-subnet.id
   
   vpc_security_group_ids = [aws_security_group.cis3470-sg.id]
