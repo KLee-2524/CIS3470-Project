@@ -15,10 +15,14 @@ variable "vm_type" {
     default     = "KALI"
 }
 
-# us-west-1 Kali Linux AMI: ami-0f36db53af1422a10
-# us-west-1 Windows Server 2022 AMI: ami-06fe666da1b90024e
-variable "vm_ami" {
-    description = "AMI of the VM to deploy"
+variable "kali_ami" {
+    description = "AMI of the Kali VM to deploy"
     type        = string
     default     = ami-0f36db53af1422a10
+}
+
+variable "winser22_ami" {
+    description = "AMI of the WinSer22 VM to deploy"
+    type        = string
+    default     = ami-06fe666da1b90024e
 }
