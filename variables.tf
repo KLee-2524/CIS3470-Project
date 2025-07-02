@@ -12,11 +12,11 @@ variable "aws_region" {
 variable "kali_ami" {
     description = "AMI of the Kali VM to deploy"
     type        = string
-    default     = ami-0f36db53af1422a10
+    default     = "ami-0f36db53af1422a10"
 }
 
 variable "winser22_ami" {
     description = "AMI of the WinSer22 VM to deploy"
     type        = string
-    default     = ami-06fe666da1b90024e
+    default     = "ami-06fe666da1b90024e"
 }
