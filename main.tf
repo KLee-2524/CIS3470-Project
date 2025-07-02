@@ -57,6 +57,14 @@ resource "aws_security_group" "kali-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # Either from 8 + to 0 or from -1 + to -1
+  ingress {
+    from_port  = -1
+    to_port    = -1
+    protocol   = "icmp"
+    security_groups = aws_security_group.kali-sg.id
+  }
+
   egress {
     from_port  = 0
     to_port    = 0
