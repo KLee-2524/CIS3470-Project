@@ -57,19 +57,21 @@ resource "aws_security_group" "kali-sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Either from 8 + to 0 or from -1 + to -1
-  ingress {
-    from_port  = -1
-    to_port    = -1
-    protocol   = "icmp"
-  }
-
   egress {
     from_port  = 0
     to_port    = 0
     protocol   = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+}
+
+resource "aws_vpc_security_group_ingress_rule" "icmp-rule" {
+  security_group_id = aws_security_group.kali-sg.id
+
+  cidr_ipv4   = aws_security_group.kali-sg.id
+  from_port   = -1
+  ip_protocol = "icmp"
+  to_port     = -1
 }
 
 resource "aws_instance" "winser22-vm" {
