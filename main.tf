@@ -69,13 +69,8 @@ resource "aws_security_group" "cis3470-sg" {
   }
 }
 
-resource "aws_key_pair" "terraform-kp" {
-  key_name = "terraform-key-pair"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCZGj5R1HTG3yFkqbIXFuYttZqXpM4gwatKCY7Z3rkEpTyhuZsNxM2jujfU+DX3U9MWvVkKSEoO46adkizf8fCZWkjoF455izYNzXeopqNqJf2d67rvDiDuH3srO2SmhpdjlQpe0aLaUKI4s5wCrfu6ZvZEmV393Pwd7NMdEpu/w/oYrO/NDjxx0Cl8aBhoo53kE4p2szcJnU1rC0liBSIcx20OEoLnd4xf1COK15Z45q7pSzoKblbalkeTJFEQTqBvw8eKQzyb3At7u7ybJ5E8ZkopuPj7KFlEN0gC828Mgqx6TYVAlHw4eI9L9Zmt37o2QiOgMiJaeAlk1fsaF60L"
-}
-
 resource "aws_instance" "cis3740-win-ser-22" {
-  ami           = var.vm_ami.default
+  ami           = var.winser22_ami.default
   instance_type = var.instance_type.default
   subnet_id     = aws_subnet.cis3470-subnet.id
   

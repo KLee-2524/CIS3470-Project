@@ -3,7 +3,20 @@ variable "instance_type" {
   default     = "t2.micro"
 }
 
-variable "vm_ami" {
-    description = "Virtual Machine AWS AMI" 
-    default = "ami-06fe666da1b90024e"
+variable "aws_region" {
+    description = "AWS region where resources will be deployed" 
+    type        = string
+    default     = "us-west-1"
+}
+
+variable "kali_ami" {
+    description = "AMI of the Kali VM to deploy"
+    type        = string
+    default     = ami-0f36db53af1422a10
+}
+
+variable "winser22_ami" {
+    description = "AMI of the WinSer22 VM to deploy"
+    type        = string
+    default     = ami-06fe666da1b90024e
 }
