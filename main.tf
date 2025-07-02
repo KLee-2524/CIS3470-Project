@@ -62,7 +62,7 @@ resource "aws_security_group" "kali-sg" {
     from_port   = -1
     to_port     = -1
     protocol    = "icmp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = "172.16.0.0/24"
   }
 
   egress {
